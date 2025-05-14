@@ -21,7 +21,7 @@ import nodejs from "./nodejs.svg";
 import tailwind from "./tailwind.svg";
 import rightarrow from "./rightarrow.svg";
 
-import capture from "./Capture.png";
+// import capture from "./Capture.png";
 import mobile_icon from "./mobile-icon.png";
 import ui_icon from "./ui-icon.png";
 import web_icon from "./web-icon.png";
@@ -41,7 +41,7 @@ export const assets = {
   profile,
   codeIcon,
   project,
-  capture,
+  // capture,
   react,
   nodejs,
   tailwind,
