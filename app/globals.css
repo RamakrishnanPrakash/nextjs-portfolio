@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .y-axis-scroll {
+    animation: loop-scroll 10s linear infinite;
+    white-space: nowrap;
+  }
+
+  .x-axis-scroll {
+    animation: loop-scroll-x 10s linear infinite;
+    white-space: nowrap;
+  }
+
+  .__json-pretty__ {
+    background-color: transparent !important;
+  }
+
+  .scrolling-container {
+    max-height: 300px; /* Limit height */
+    overflow-y: hidden; /* Hide overflow */
+    position: relative;
+  }
+
+  .__json-pretty__ {
+    animation: scrollUp 60s linear infinite !important;
+  }
+  .__json-string__ {
+    color: rgb(60, 248, 22) !important;
+  }
+
+  .bg-or {
+    background-color: var(--color-orange-500);
+    animation: bg-hide 3s infinite !important;
+  }
+}
+
+@keyframes bg-hide {
+  30% {
+    background-color: var(--color-purple-400);
+  }
+  60% {
+    background-color: var(--color-purple-500);
+  }
+  100% {
+    background-color: var(--color-purple-400);
+  }
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-60%);
+  }
+}
+
+@keyframes loop-scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes loop-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
