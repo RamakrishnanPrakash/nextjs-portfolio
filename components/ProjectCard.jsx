@@ -6,7 +6,7 @@ const ProjectCard = ({ project }) => {
     <div className="w-[300px]  h-[360px] shadow hover:-translate-y-2 transition-all duration-300  shadow-purple-100 mt-3 overflow-hidden relative">
       <div
         className="relative w-[85%] mx-auto hover:rotate-2  pt-3 mt-2 h-[160px] shadow overflow-hidden shadow-white rounded-md bg-white/10 "
-        onClick={() => window.location.replace(project.website_link)}>
+        onClick={() => window.location.href=project.website_link}>
         <div className="absolute top-2 left-0 w-[60px] h-[60px] blur-2xl rounded-3xl bg-gradient-to-r from-purple-500 to-orange-500 z-[-1]"></div>
         <div className="absolute top-2 right-0 w-[60px] h-[60px] blur-2xl rounded-3xl bg-purple-500  z-[-1]"></div>
 
@@ -39,7 +39,7 @@ const ProjectCard = ({ project }) => {
           <div
             className=" cursor-pointer w-[130px] flex items-center justify-between gap-2
            bg-white/15  py-2 px-3  text-lg rounded-full   font-bold"
-            onClick={() => window.location.replace(project.website_link)}>
+            onClick={() => window.location.href=project.website_link}>
             <a>Explore</a>{" "}
             <div className="w-[30px] h-[30px] rounded-full flex items-center justify-center bg-purple-400">
               <Image
@@ -54,7 +54,7 @@ const ProjectCard = ({ project }) => {
             alt="git-icon"
             width={40}
             className="mr-3 cursor-pointer"
-            onClick={() => window.location.replace(project.github_link)}
+            onClick={() => window.location.href=project.github_link}
           />
         </div>
       </div>
