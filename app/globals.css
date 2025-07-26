@@ -1,9 +1,15 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer utilities {
   .y-axis-scroll {
     animation: loop-scroll 10s linear infinite;
     white-space: nowrap;
+  }
+
+  .service-x-axis-scroll {
+    animation: service 10s linear infinite;
   }
 
   .x-axis-scroll {
@@ -32,8 +38,53 @@
     background-color: var(--color-orange-500);
     animation: bg-hide 3s infinite !important;
   }
+
+  .scale-animation {
+    animation: scale 0.9s linear infinite;
+  }
+
+  .image-animaton {
+    animation: image-anim 10s linear infinite;
+  }
+  .custom-ring-before::before {
+    content: "";
+    --tw-ring-offset-width: 0px;
+    --tw-ring-offset-color: #fff;
+    --tw-ring-color: rgba(59, 130, 246, 0.5);
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow);
+  }
+
+  .black-rounded::before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    position: absolute;
+    z-index: -2;
+  }
 }
 
+@keyframes image-anim {
+  0% {
+    transform: rotateY(45deg);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+@keyframes scale {
+  0% {
+    scale: 0.7;
+  }
+  70% {
+    scale: 1;
+  }
+  100% {
+    scale: 1;
+  }
+}
 @keyframes bg-hide {
   30% {
     background-color: var(--color-purple-400);
@@ -70,5 +121,13 @@
   }
   100% {
     transform: translateY(-100%);
+  }
+}
+@keyframes service {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }

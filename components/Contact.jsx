@@ -2,6 +2,10 @@
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ArrowRight } from "lucide-react";
+import SocialMediaAnimation from "./UI/SocialMediaAnimation";
 
 const Contact = () => {
   const [contactData, setContactData] = useState({
@@ -16,11 +20,35 @@ const Contact = () => {
     setContactData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const onClickHandler = () => {
-    console.log(contactData);
+  const onClickHandler = async () => {
+    if (!contactData.name || !contactData.email || contactData.description) {
+      toast.error("Please fill the form");
+      return;
+    }
+    const formData = new FormData();
+    formData.append("name", contactData.name);
+    formData.append("email", contactData.email);
+    formData.append("description", contactData.description);
+    formData.append("access_key", "d28f2514-be26-4a46-b98d-23140399022a");
+    console.log([...formData.entries()]);
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+    console.log(data);
+    if (data.success) {
+      toast.success("Form Submitted Successfully");
+      setContactData({ name: "", email: "", description: "" });
+    } else {
+      toast.error(data.message);
+    }
   };
   return (
-    <div>
+    <div className="w-full h-full relative">
+      <SocialMediaAnimation />
+      <div className=" absolute w-full h-full bg-[#ffffff02] z-[-1] top-0 left-0"></div>
       <h6 className="text-center text-lg mb-2 text-white">Connect with me</h6>
 
       <div className="flex justify-center">
@@ -72,20 +100,21 @@ const Contact = () => {
           onClick={onClickHandler}
           className=" w-[200px] bg-gradient-to-r mt-4 hover:to-purple-500 hover:from-orange-500 
           cursor-pointer transform duration-700
-           from-purple-500 to-orange-500 px-5 py-3 rounded-md">
-          Submit Now
+           from-purple-500 to-orange-500 px-5 py-3 rounded-md flex items-center justify-center gap-2">
+          Submit Now <ArrowRight />
         </button>
       </div>
 
-      <div className="w-full flex items-center justify-center flex-col">
+      <div className="w-full flex items-center justify-center flex-col gap-1 md:gap-1">
         <Image src={assets.logo_light} alt="my logo" width={200} />
-        <div className="max-w-[300px] flex items-center justify-center gap-2">
+        <div className="max-w-[300px] flex items-center justify-center gap-1">
           <Image src={assets.mail_icon} alt="mail-icon" width={20} />
           <a href="" className="text-white/50">
             ramakrishnanguna2003@gmail.com
           </a>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

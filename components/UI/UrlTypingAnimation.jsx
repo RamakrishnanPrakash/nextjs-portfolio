@@ -1,3 +1,5 @@
+"useClient";
+
 import { useEffect, useState } from "react";
 
 const UrlTypingAnimation = () => {
