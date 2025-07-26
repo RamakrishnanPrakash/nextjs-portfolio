@@ -71,8 +71,11 @@ const Projects = () => {
         {/*  */}
       </div>
       <div className="w-full flex flex-wrap items-center justify-center gap-4 mt-2 relative">
-        <div className="  absolute sm:hidden w-[40px] blur-3xl h-[50px] z-[-1] bg-orange-500 top-6 right-0"></div>
-        {projectData.map((project) => (
+        {/* Decorative blur element for mobile */}
+        <div className="absolute sm:hidden w-[40px] blur-3xl h-[50px] z-[-1] bg-orange-500 top-6 right-0"></div>
+
+        {/* Reversed project cards */}
+        {[...projectData].reverse().map((project) => (
           <ProjectCard key={project._id} project={project} />
         ))}
       </div>
