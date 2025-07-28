@@ -9,7 +9,7 @@ import { ArrowDownToLine, ArrowUpRight } from "lucide-react";
 const Hero = () => {
   return (
     <motion.section
-      className="w-screen min-h-[115vh] sm:min-h-[95vh] relative mt-[3%] "
+      className="w-screen min-h-[95vh] relative mt-[3%] "
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       id="home">
